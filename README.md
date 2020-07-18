@@ -13,7 +13,13 @@ Things you may want to cover:
 
 * Database creation
 
+$ bin/rails db:create
+
 * Database initialization
+
+$ bin/rails g model Task name:string description:text  
+$ bin/rails db:migrate
+
 
 * How to run the test suite
 
