@@ -22,7 +22,6 @@ $ bin/rails db:create
 $ bin/rails g model Task name:string description:text  
 $ bin/rails db:migrate
 
-
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
