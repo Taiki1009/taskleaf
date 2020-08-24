@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
-  resources :tasks
   root to: 'tasks#index'
   
   # resourcesを１つのメソッドのみで使用したい場合
   # resource :tasks, only: [:index]
   # resources :tasks, except: [:delete, :patch, :edit]
+
+  resources :tasks do
+    post :confirm, action: :confirm_new, on: :new
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
