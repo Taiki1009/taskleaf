@@ -18,10 +18,10 @@ describe 'タスク管理機能', type: :system do
     describe '一覧表示機能' do
         context 'ユーザーAがログインしているとき' do
             let(:login_user) { user_a }
-            # it_behaves_like 'ユーザーAが作成したタスクが表示される'
-            it 'ユーザーAが作成したタスクが表示される' do
-                expect(page).to have_content '最初のタスク'
-            end
+            it_behaves_like 'ユーザーAが作成したタスクが表示される'
+            # it 'ユーザーAが作成したタスクが表示される' do
+            #     expect(page).to have_content '最初のタスク'
+            # end
         end
 
         context 'ユーザーBがログインしているとき' do
@@ -38,10 +38,10 @@ describe 'タスク管理機能', type: :system do
             before do
                 visit task_path(task_a)
             end
-            # it_behaves_like 'ユーザーAが作成したタスクが表示される'
-            it 'ユーザーAが作成したタスクが表示される' do
-                expect(page).to have_content '最初のタスク'
-            end
+            it_behaves_like 'ユーザーAが作成したタスクが表示される'
+            # it 'ユーザーAが作成したタスクが表示される' do
+            #     expect(page).to have_content '最初のタスク'
+            # end
         end
     end
 
@@ -62,10 +62,11 @@ describe 'タスク管理機能', type: :system do
         context '新規作成画面で名称を入力しなかったとき' do
             let(:task_name) { '' }
             it 'エラーとなる' do
-                within '#error_explanation' do
-                    expect(page).to have_content '名称を入力してください'
-                end
+                expect(page).to have_content '名前なし'
             end
+                # within '#error_explanation' do
+                #     expect(page).to have_content 'Nameを入力してください'
+                # end
         end
     end
 end 
