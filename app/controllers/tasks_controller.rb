@@ -7,9 +7,11 @@ class TasksController < ApplicationController
     @tasks = @q.result(distinct: true)
   end
 
+
   def show
     @task = current_user.tasks.find(params[:id])
   end
+
 
   def new
     @task = Task.new
@@ -25,13 +27,14 @@ class TasksController < ApplicationController
       render :new
       return
     end
-
     if @task.save
+      TaskMailer.creation_email(@task).deliver_now 
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました"
     else
       render :new
     end
   end
+
 
   def edit
     @task = current_user.tasks.find(params[:id])
