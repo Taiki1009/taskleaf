@@ -8,6 +8,7 @@ class Task < ApplicationRecord
 
     belongs_to :user
     scope :recent, -> { order(created_at: :desc) }
+    paginates_per 25
 
     def self.ransackable_attributes(auth_pbject = nil)
         # 意図しないカラムの検索を防ぐため、検索できるカラムを制限する
